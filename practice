@@ -22,4 +22,57 @@ app.listen(8000,()=>{
 
 2) Routing in express.js
 
+const express = require('express');
+const app = express();
 
+app.get('/',(req,res)=>{
+    res.send("Hello from Home Page");
+})
+
+app.get("/about",(req,res)=>{
+    res.send("Hello from about us page");
+})
+
+app.get("/contact",(req,res)=>{
+    res.send("Hello from contact us page");
+})
+
+app.listen(8000,()=>{
+    console.log("Listening to the port 8000");
+})
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3) Template Engine in express
+
+// there are many template engines are there but 'pug' is one of the most widely used template engine
+/*a template engine is a module that allows you to render dynamic HTML content on the server side. Express.js supports 
+various template engines, and they all serve the same fundamental purpose: generating dynamic HTML by combining templates with data.*/
+
+const express = require('express');
+const path = require('path');
+const app = express();
+
+
+//Set Up the View Engine and Views Directory:
+const templatePath = path.join(__dirname,'/view');
+app.set("view engine","pug");
+app.set("views",templatePath);
+
+//When a user accesses the root URL (/), the server renders the index.pug template and sends the HTML content to the client.
+app.get('/',(req,res)=>{
+    res.render("index")
+})
+
+// it follows top down approach so it will display top content always
+app.get('/',(req,res)=>{
+    res.render("hey hello");
+})
+
+app.listen(8000,()=>{
+    console.log("Listening on port 8000");
+})
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4) 
